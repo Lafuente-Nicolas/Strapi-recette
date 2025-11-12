@@ -1,6 +1,14 @@
 
 @token = f460e86205d8db18d68c23947719b94aaa9c7bfa32cf5946357877182c0909eec86a7acba8da21bba5e994723f3a332731cdf8890b43799a5da7c203df0d58f6d3bf3127f9564b9caec6c2e75464b372f35ab8916412ae23d63cca5b92b0557b2b330ba0aa290838e85f9a7f101d64cc230c5eff8e804d1db0a2a73f7388e1c0
 
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "nicolas",
+  "password": "test123"
+}
+
 PUT  http://localhost:1337/localhost:1337/api/recettes/2
 Content-Type: application/json
 

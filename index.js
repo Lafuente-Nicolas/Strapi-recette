@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import recettesRoutes from "./routes/recettes.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/recettes", recettesRoutes);
+app.use("/api/auth", authRoutes);
 
 //  Démarrage du serveur 
 app.listen(PORT, () => {

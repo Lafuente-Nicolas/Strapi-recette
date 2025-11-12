@@ -5,12 +5,15 @@ import bcrypt from "bcrypt";
 
 // créer et vérifier les tokens
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const router = express.Router();
 
 let users = [];
 
-const JWT_SECRET = "super_secret_key";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post("/register", async (req, res) => {
 
