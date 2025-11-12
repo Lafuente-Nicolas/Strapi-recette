@@ -42,3 +42,30 @@ router.post("/register", async (req, res) => {
 
   res.status(201).json({ message: "Utilisateur créé avec succès" });
 });
+
+router.post("/login", async (req, res) => {
+  // On récupère le nom d'utilisateur et le mot de passe envoyés
+  const { username, password } = req.body;
+
+  // On cherche si cet utilisateur existe
+  const user = users.find(u => u.username === username);
+  if (!user) {
+    return res.status(400).json({ message: "Utilisateur introuvable" });
+  }
+
+  // On compare le mot de passe entré avec le mot de passe chiffré
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) {
+    return res.status(400).json({ message: "Mot de passe incorrect" });
+  }
+
+  // Si le mot de passe est bon = on crée un token JWT
+  const token = jwt.sign(
+    { id: user.id, username: user.username },
+    JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+
+  // On renvoie le token au client
+  res.json({ message: "Connexion réussie", token });
+});
