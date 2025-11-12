@@ -229,3 +229,42 @@ Réponse attendue :
   }
 }
 ```
+
+
+---
+
+## 8. Bonnes pratiques de sécurité
+
+| Bonnes pratiques | Description |
+|------------------|-------------|
+| Clé secrète | Stocker dans `.env`, jamais en clair |
+| Mot de passe | Toujours haché avec `bcrypt` |
+| Expiration des tokens | Utiliser `expiresIn` pour limiter la durée |
+| Messages d’erreur | Ne pas préciser si le mot de passe ou l’utilisateur est faux |
+| Refresh Token | Implémenter si les sessions doivent durer longtemps |
+| Rate Limiting | Empêcher les tentatives de brute-force |
+| HTTPS | Toujours utiliser HTTPS en production |
+
+---
+
+## 9. Étapes suivantes
+
+Une fois l’authentification fonctionnelle :
+1. Remplacer le stockage en mémoire par une base de données (SQLite, MongoDB, PostgreSQL…).
+2. Ajouter un middleware global de vérification JWT.
+3. Mettre en place un système de rôles (admin, user, etc.).
+4. Implémenter la réinitialisation de mot de passe.
+5. Gérer les tokens de rafraîchissement si tu veux des sessions longues.
+
+---
+
+## Conclusion
+
+Tu as maintenant un système d’authentification complet avec :
+- Inscription, connexion, et routes protégées
+- Gestion sécurisée des mots de passe (bcrypt)
+- Tokens JWT pour l’accès
+- Architecture claire et extensible
+
+Ce système constitue la base de toute application web sécurisée construite avec Express.
+
