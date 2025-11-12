@@ -53,3 +53,38 @@ projet-auth/
 ```
 
 ---
+
+
+## 3. Variables d’environnement
+
+Créer un fichier `.env` à la racine :
+
+```env
+JWT_SECRET=ma_cle_secrete
+```
+
+Ne jamais exposer cette clé.
+
+Ajoute `.env` à ton `.gitignore` :
+```
+node_modules/
+.env
+```
+
+---
+
+## 4. Configuration du serveur Express
+
+Ton fichier `index.js` doit :
+1. Créer et configurer le serveur Express.
+2. Utiliser les middlewares nécessaires (`express.json()`, `cors()`).
+3. Importer et activer les routes d’authentification.
+
+Tâches à faire :
+- Importer `dotenv` et appeler `dotenv.config()`.
+- Définir un port.
+- Monter les routes `/api/auth`.
+
+Le serveur doit afficher un message de confirmation dans la console au démarrage.
+
+---
