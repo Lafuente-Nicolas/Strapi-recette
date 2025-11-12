@@ -88,3 +88,45 @@ Tâches à faire :
 Le serveur doit afficher un message de confirmation dans la console au démarrage.
 
 ---
+
+## 5. Créer le routeur d’authentification (`routes/auth.js`)
+
+Ce routeur gère trois fonctionnalités principales :
+
+### 5.1. Inscription (`POST /api/auth/register`)
+**Objectif :**
+Permettre à un utilisateur de créer un compte.
+
+**Étapes :**
+1. Récupérer `username` et `password` depuis `req.body`.
+2. Vérifier qu’ils sont bien remplis.
+3. Vérifier que l’utilisateur n’existe pas déjà.
+4. Hacher le mot de passe avec `bcrypt.hash()`.
+5. Enregistrer le nouvel utilisateur (en mémoire ou en base).
+6. Retourner une réponse `201` avec un message de succès.
+
+Bonnes pratiques :
+- Ne jamais stocker le mot de passe en clair.
+- Ajouter une validation côté serveur (longueur minimale, caractères, etc.).
+
+---
+
+### 5.2. Connexion (`POST /api/auth/login`)
+**Objectif :**
+Permettre à un utilisateur existant de se connecter et d’obtenir un token JWT.
+
+**Étapes :**
+1. Récupérer `username` et `password`.
+2. Vérifier que l’utilisateur existe.
+3. Comparer les mots de passe (`bcrypt.compare()`).
+4. Si la comparaison est bonne :
+   - Créer un token JWT avec `jwt.sign()`.
+   - Le token contient un payload minimal : `id`, `username`.
+   - Spécifier une durée de validité (ex : `1h`).
+5. Retourner le token au client.
+
+**Structure d’un token JWT :**
+```
+header.payload.signature
+```
+
