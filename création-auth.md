@@ -166,3 +166,66 @@ app.get("/api/recettes", authMiddleware, (req, res) => {
 ```
 
 ---
+
+
+## 7. Tester avec Thunder Client ou Postman
+
+### 1. Enregistrer un utilisateur
+- Méthode : `POST`
+- URL : `http://localhost:3000/api/auth/register`
+- Body JSON :
+  ```json
+  {
+    "username": "nicolas",
+    "password": "123456"
+  }
+  ```
+
+Réponse attendue :
+```json
+{ "message": "Utilisateur créé avec succès" }
+```
+
+---
+
+### 2. Se connecter
+- Méthode : `POST`
+- URL : `http://localhost:3000/api/auth/login`
+- Body JSON :
+  ```json
+  {
+    "username": "nicolas",
+    "password": "123456"
+  }
+  ```
+
+Réponse attendue :
+```json
+{
+  "message": "Connexion réussie",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5..."
+}
+```
+
+---
+
+### 3. Accéder au profil (route protégée)
+- Méthode : `GET`
+- URL : `http://localhost:3000/api/auth/profile`
+- Headers :
+  ```
+  Authorization: Bearer <ton_token_reçu>
+  ```
+
+Réponse attendue :
+```json
+{
+  "message": "Profil utilisateur",
+  "user": {
+    "id": 1,
+    "username": "nicolas",
+    "iat": 1731410000,
+    "exp": 1731413600
+  }
+}
+```
