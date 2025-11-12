@@ -1,0 +1,25 @@
+{
+  "name": "strapi-recette",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lafuente-Nicolas/Strapi-recette.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lafuente-Nicolas/Strapi-recette/issues"
+  },
+  "homepage": "https://github.com/Lafuente-Nicolas/Strapi-recette#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
