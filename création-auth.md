@@ -130,3 +130,39 @@ Permettre à un utilisateur existant de se connecter et d’obtenir un token JWT
 header.payload.signature
 ```
 
+---
+
+### 5.3. Route protégée (`GET /api/auth/profile`)
+**Objectif :**
+Permettre à un utilisateur connecté d’accéder à ses informations à partir de son token.
+
+**Étapes :**
+1. Lire le header `Authorization` envoyé par le client :
+   ```
+   Authorization: Bearer <token>
+   ```
+2. Extraire le token.
+3. Vérifier sa validité avec `jwt.verify()`.
+4. Si valide → renvoyer les infos du payload (`id`, `username`).
+5. Si invalide → renvoyer une erreur `401 Unauthorized`.
+
+---
+
+## 6. Protection des autres routes
+
+Tu peux protéger n’importe quelle route (ex. `/api/recettes`) avec un middleware d’authentification.
+
+### Étapes du middleware :
+1. Vérifier la présence du header `Authorization`.
+2. Extraire et vérifier le token.
+3. Si valide → ajouter `req.user = decoded`.
+4. Si non valide → refuser l’accès (401).
+
+Ensuite, tu l’ajoutes sur les routes à protéger :
+```js
+app.get("/api/recettes", authMiddleware, (req, res) => {
+  res.json({ message: "Route protégée !" });
+});
+```
+
+---
