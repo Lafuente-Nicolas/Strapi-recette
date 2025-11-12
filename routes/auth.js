@@ -69,3 +69,30 @@ router.post("/login", async (req, res) => {
   // On renvoie le token au client
   res.json({ message: "Connexion réussie", token });
 });
+
+router.get("/profile", (req, res) => {
+
+  // On récupère le header "Authorization" 
+  const authHeader = req.headers.authorization;
+
+  // Si le header est manquant = refusé
+  if (!authHeader) {
+    return res.status(401).json({ message: "Token manquant" });
+  }
+
+  // On extrait le token du header
+  const token = authHeader.split(" ")[1];
+
+  try {
+    // On vérifie le token avec une clé secrète
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+   
+    res.json({ message: "Profil utilisateur", user: decoded });
+  } catch (err) {
+    res.status(401).json({ message: "Token invalide ou expiré" });
+  }
+});
+
+// pour pouvoir l’utiliser dans index.js
+export default router;
