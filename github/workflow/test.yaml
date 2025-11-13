@@ -1,0 +1,28 @@
+name: CI/CD Pipeline
+
+on:
+
+Jobs:
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+      - name: Install dependencies
+      - name: run tests
+
+    build:
+
+      deploy: 
+      noods: build  
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main' 
+
+      steps:
+        - name: Trigger Render.com Deployment
+          uses: render-examples/deploy-to-render@v1
+          run: curl "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" 
