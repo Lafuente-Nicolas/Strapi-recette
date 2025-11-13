@@ -1,0 +1,30 @@
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Fichiers de configuration Git
+.git
+.gitignore
+
+# Fichiers d’environnement
+.env
+.env.*
+!.env.example
+
+# Fichiers temporaires ou de build
+tmp
+.cache
+.build
+dist
+
+# Dossiers système / IDE
+.DS_Store
+.vscode
+.idea
+
+# Logs
+*.log
+
+# Docker files themselves
+Dockerfile*
+docker-compose*.yml
