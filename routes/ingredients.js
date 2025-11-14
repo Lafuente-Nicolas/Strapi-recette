@@ -36,3 +36,17 @@ router.put("/:id", (req, res) => {
   res.json(ingredients[index]);
 });
 
+// Supprimer un ingrédient
+router.delete("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = ingredients.findIndex(r => r.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "Recette non trouvée" });
+  }
+
+  ingredients.splice(index, 1);
+  res.status(204).send();
+});
+
+export default router;
