@@ -42,3 +42,46 @@
   `docker rm <id>`                         Supprime un conteneur
   `docker logs <id>`                       Affiche les logs
   `docker exec -it <id> bash`              Ouvre un shell dans le conteneur
+
+
+## 4. Volumes
+
+  Commande                       Description
+  ------------------------------ --------------------
+  `docker volume ls`             Liste les volumes
+  `docker volume create <nom>`   Crée un volume
+  `docker volume rm <nom>`       Supprime un volume
+
+## 5. Réseaux
+
+  ----------------------------------------------------------------------------------------
+  Commande                                        Description
+  ----------------------------------------------- ----------------------------------------
+  `docker network ls`                             Liste les réseaux
+
+  `docker network create <nom>`                   Crée un réseau
+
+  `docker network connect <réseau> <container>`   Connecte un conteneur au réseau
+
+  `docker network rm <nom>`                       Supprime un réseau
+  ----------------------------------------------------------------------------------------
+
+## 6. Docker Compose
+
+### Commandes principales
+
+  -------------------------------------------------------------------------------
+  Commande                               Description
+  -------------------------------------- ----------------------------------------
+  `docker compose up`                    Lance les services
+
+  `docker compose up -d`                 Lance en arrière-plan
+
+  `docker compose down`                  Stoppe et supprime containers + réseau
+
+  `docker compose logs -f`               Logs des services
+
+  `docker compose build`                 Build les images
+
+  `docker compose exec <service> bash`   Ouvre un shell dans un service
+  -------------------------------------------------------------------------------
