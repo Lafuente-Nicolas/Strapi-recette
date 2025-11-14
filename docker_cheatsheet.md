@@ -85,3 +85,11 @@
 
   `docker compose exec <service> bash`   Ouvre un shell dans un service
   -------------------------------------------------------------------------------
+
+## 9. Workflow complet résumé
+
+1.  Créer un Dockerfile\
+2.  `docker build -t mon-app .`\
+3.  `docker run -p 3000:3000 mon-app`\
+4.  (optionnel) `docker compose up -d`\
+5.  `docker push mon-app`
