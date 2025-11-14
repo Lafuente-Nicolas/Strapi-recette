@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-// Données temporaires
+
 let recettes = [
   { id: 1, titre: "Tartiflette", tdp: "30 min", difficulte: "Facile", budget: "8" },
   { id: 2, titre: "Crêpes", tdp: "15 min", difficulte: "Facile", budget: "4" }
